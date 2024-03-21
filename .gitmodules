@@ -1,0 +1,6 @@
+[submodule "PongWorld-Server"]
+	path = PongWorld-Server
+	url = git@github.com:Tscen-Rangers/PongWorld-Server.git
+[submodule "PongWorld-Client"]
+	path = PongWorld-Client
+	url = git@github.com:Tscen-Rangers/PongWorld-Client.git
