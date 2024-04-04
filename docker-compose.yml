@@ -1,0 +1,29 @@
+services:
+  db:
+    container_name: db
+    image: postgres:13
+    environment:
+      - POSTGRES_NAME=pong_world
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+    expose:
+      - "5432"
+    volumes:
+      - ./PongWorld-Server/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  backend:
+    container_name: backend
+    image: backend
+    build: ./PongWorld-Server/pongWorld
+    pull_policy: never
+    environment:
+      - POSTGRES_NAME=pong_world
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+    depends_on:
+      - db
+    volumes:
+      - type: bind
+        source: ./PongWorld-Server/pongWorld
+        target: /app 
+    ports:
+      - '8000:8000'
