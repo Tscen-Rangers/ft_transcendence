@@ -1,0 +1,65 @@
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# http://wiki.nginx.org/Pitfalls
+# http://wiki.nginx.org/QuickStart
+# http://wiki.nginx.org/Configuration
+#
+# Generally, you will want to move this file somewhere, and start with a clean
+# file but keep this around for reference. Or just disable in sites-enabled.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+# Default server configuration
+#
+server {
+        # SSL configuration
+
+        listen 443 ssl;
+        listen 80;
+        listen [::]:443 ssl;
+
+        # SSL setting
+        ssl_certificate		/etc/ssl/certs/pongworld.crt;
+        ssl_certificate_key	/etc/ssl/private/pongworld.key;
+        ssl_protocols		TLSv1.2 TLSv1.3;
+
+        # 프론트엔드 파일 서빙
+        location / {
+            root /app/frontend;
+            try_files $uri $uri/ /index.html;
+        }
+
+        server_name pongworld;
+
+        # 백엔드 API 프록시
+        location /api {
+            proxy_pass https://127.0.0.1:8000; # 백엔드 서버로 요청 전달
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+            # CORS 헤더 추가 (필요한 경우)
+            add_header 'Access-Control-Allow-Origin' '*' always;
+            add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+            add_header 'Access-Control-Allow-Headers' 'X-Requested-With, Content-Type, Authorization' always;
+        }
+
+        location /media {
+            alias /app/media;
+        }
+
+        # 웹소켓을 위한 프록시 설정
+        location /ws/ {
+            proxy_pass http://backend:8000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+}
