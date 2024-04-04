@@ -10,6 +10,9 @@ services:
       - "5432"
     volumes:
       - ./PongWorld-Server/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - ft_transcendence
+  
   backend:
     container_name: backend
     image: backend
@@ -27,3 +30,28 @@ services:
         target: /app 
     ports:
       - '8000:8000'
+    networks:
+      - ft_transcendence
+
+  nginx:
+    pull_policy: never
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports: 
+      - 443:443
+      - 80:80
+    # env_file:
+    #   - .env
+    networks:
+      - ft_transcendence
+    depends_on:
+      - backend
+    volumes:
+      - ./PongWorld-Client:/app/frontend
+      - ./PongWorld-Server/pongWorld/transcendence/media:/app/media
+
+networks:
+  ft_transcendence:
+    driver: bridge
