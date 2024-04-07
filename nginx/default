@@ -35,7 +35,7 @@ server {
 
         # 백엔드 API 프록시
         location /api {
-            proxy_pass https://127.0.0.1:8000; # 백엔드 서버로 요청 전달
+            proxy_pass http://backend:8000; # 백엔드 서버로 요청 전달
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection 'upgrade';
