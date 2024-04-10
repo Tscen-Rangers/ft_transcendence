@@ -44,7 +44,7 @@ services:
       - backend
     volumes:
       - ./PongWorld-Client:/app/frontend
-      - ./PongWorld-Server/pongWorld/transcendence/media:/app/media
+      - ./PongWorld-Server/pongWorld/media:/app/media
 
 networks:
   ft_transcendence:
