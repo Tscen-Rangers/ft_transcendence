@@ -5,7 +5,7 @@ services:
     env_file:
       - ./PongWorld-Server/pongWorld/.env
     expose:
-      - "5432"
+      - 5432
     volumes:
       - ./PongWorld-Server/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
@@ -24,8 +24,8 @@ services:
       - type: bind
         source: ./PongWorld-Server/pongWorld
         target: /app 
-    ports:
-      - '8000:8000'
+    expose:
+      - 8000
     networks:
       - ft_transcendence
 
@@ -37,7 +37,6 @@ services:
     container_name: nginx
     ports: 
       - 443:443
-      - 80:80
     networks:
       - ft_transcendence
     depends_on:
