@@ -10,3 +10,6 @@
 | Front-End | Front-End | Full-Stack | Back-End | Back-End |
 
 <br/>
+
+### Tech Stack :eyes:
+<img width="400" alt="기술 스텍" src="https://github.com/Tscen-Rangers/ft_transcendence/assets/74671573/0f8659bd-a3e5-4c4f-beae-1022d64e7c93">
