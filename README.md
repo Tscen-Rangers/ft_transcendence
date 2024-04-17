@@ -12,4 +12,9 @@
 <br/>
 
 ### Tech Stack :eyes:
-<img width="400" alt="기술 스텍" src="https://github.com/Tscen-Rangers/ft_transcendence/assets/74671573/0f8659bd-a3e5-4c4f-beae-1022d64e7c93">
+<img width="400" alt="기술 스텍" src="https://github.com/Tscen-Rangers/ft_transcendence/assets/101648575/00c4f76f-5318-44d8-b269-508a053fad8b)">
+<br/>
+<img width="400" alt="기술 스텍" src="https://github.com/Tscen-Rangers/ft_transcendence/assets/101648575/42a19468-df05-4c2f-b489-b15afc8f37a3)">
+<br/>
+<img width="400" alt="기술 스텍" src="https://github.com/Tscen-Rangers/ft_transcendence/assets/101648575/1f2bf99a-7785-409b-b80a-747962214893)">
+
