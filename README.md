@@ -1,4 +1,4 @@
-# PONG WORLD 
+# PONG WORLD 🏓
 ### 실시간 PingPong 게임 플랫폼
 ##### :sparkles: 42Seoul ft_transcendence :sparkles:
 <img width="800" alt="메인" src="https://github.com/Tscen-Rangers/ft_transcendence/assets/74671573/db0d735e-5573-4403-9e2f-d8cf3892bf50">
